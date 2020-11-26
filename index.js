@@ -60,8 +60,9 @@ writeFiles([
 cp.exec(`npm init -y`, { cwd: process.cwd() }, () => {
 
   cp.exec('yarn set version berry', { cwd: process.cwd() }, () => {
+    cp.execSync('yarn plugin import https://github.com/cometkim/yarn-plugin-bump/releases/download/v0.0.7/plugin-bump.js', { cwd: process.cwd() })
     cp.exec('yarn dlx @yarnpkg/pnpify --sdk vscode', { cwd: process.cwd() }, () => {
-
+      
       cp.exec(`yarn`, { cwd: process.cwd() }, () => {
 
         cp.exec('yarn plugin import typescript', { cwd: process.cwd() }, () => {
@@ -111,7 +112,22 @@ cp.exec(`npm init -y`, { cwd: process.cwd() }, () => {
             path.join(process.cwd(), "package.json"),
             JSON.stringify(content, null, 2)
           );
+          fs.writeFileSync(path.join(process.cwd(), 'README.md'), outdent`
+          # ${content.name}
+
+          Created with [create-ts-pro](https://github.com/Milo123459/create-ts-pro)
+
+          # create-ts-pro
+
+          Features:
           
+          * Yarn PnP
+          * Husky config
+          * Good defaults
+          * Linters
+          * Yarn bump command
+          * Bump plugin & TypeScript plugin
+          `);
         })
       });
       });
