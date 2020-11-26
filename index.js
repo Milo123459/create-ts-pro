@@ -60,10 +60,9 @@ writeFiles([
 cp.exec(`npm init -y`, { cwd: process.cwd() }, () => {
 
   cp.exec('yarn set version berry', { cwd: process.cwd() }, () => {
-    cp.execSync('yarn plugin import https://github.com/cometkim/yarn-plugin-bump/releases/download/v0.0.7/plugin-bump.js', { cwd: process.cwd() })
-    cp.execSync('yarn plugin import yarn.build/latest', { cwd: process.cwd() })
     cp.exec('yarn dlx @yarnpkg/pnpify --sdk vscode', { cwd: process.cwd() }, () => {
-      
+      cp.execSync('yarn plugin import "https://github.com/cometkim/yarn-plugin-bump/releases/download/v0.0.7/plugin-bump.js"', { cwd: process.cwd() })
+      cp.execSync('git init', { cwd: process.cwd() });
       cp.exec(`yarn`, { cwd: process.cwd() }, () => {
 
         cp.exec('yarn plugin import typescript', { cwd: process.cwd() }, () => {
