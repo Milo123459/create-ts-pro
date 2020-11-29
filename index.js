@@ -47,7 +47,7 @@ writeFiles([
 `,
   },
   { path: ".prettierignore", content: "dist\n.pnp.js\n.yarn/*" },
-  { path: ".gitignore", content: "node_modules\ndist.yarn/*\n!.yarn/cache\n!.yarn/releases\n!.yarn/plugins\n!.yarn/sdks\n!.yarn/versions" },
+  { path: ".gitignore", content: "dist\n.yarn/*\n!.yarn/cache\n!.yarn/releases\n!.yarn/plugins\n!.yarn/sdks\n!.yarn/versions" },
   { path: '.github/dependabot.yml', content: `
   version: 2
   updates:
