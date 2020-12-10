@@ -60,7 +60,6 @@ writeFiles([
 cp.exec(`npm init -y`, { cwd: process.cwd() }, () => {
 
   cp.exec('yarn set version berry', { cwd: process.cwd() }, () => {
-    cp.exec('yarn dlx @yarnpkg/pnpify --sdk vscode', { cwd: process.cwd() }, () => {
       cp.execSync('yarn plugin import "https://github.com/cometkim/yarn-plugin-bump/releases/download/v0.0.7/plugin-bump.js"', { cwd: process.cwd() })
       cp.execSync('git init', { cwd: process.cwd() });
       cp.exec(`yarn`, { cwd: process.cwd() }, () => {
@@ -70,6 +69,7 @@ cp.exec(`npm init -y`, { cwd: process.cwd() }, () => {
           cp.exec(
             `yarn add -D typescript ts-node ts-node-dev @types/node prettier @commitlint/cli @commitlint/config-angular husky lint-staged`,
             { cwd: process.cwd() }, (err) => {
+    cp.exec('yarn dlx @yarnpkg/pnpify --sdk vscode vim', { cwd: process.cwd() }, () => {
           const content = JSON.parse(
             fs.readFileSync(path.join(process.cwd(), "package.json")).toString()
           );
