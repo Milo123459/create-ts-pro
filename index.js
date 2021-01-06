@@ -3,6 +3,7 @@ const cp = require("child_process");
 const fs = require("fs");
 const path = require("path");
 const outdent = require("outdent");
+const ora = require('ora');
 fs.mkdirSync(path.join(process.cwd(), "src"));
 fs.mkdirSync(path.join(process.cwd(), '.github'));
 const writeFiles = (files) => {
@@ -57,6 +58,7 @@ writeFiles([
         interval: 'daily'
   `.trim() }
 ]);
+const spinner = ora({ color: 'blue', text: 'Creating! Do not exit the process..' }).start();
 cp.exec(`npm init -y`, { cwd: process.cwd() }, () => {
 
   cp.exec('yarn set version berry', { cwd: process.cwd() }, () => {
@@ -129,7 +131,9 @@ cp.exec(`npm init -y`, { cwd: process.cwd() }, () => {
           * Bump plugin & TypeScript plugin
           * Cool build / bundle commands (yarn.build)
           `);
-        })
+          spinner.stop()
+        });
+        
       });
       });
     });
