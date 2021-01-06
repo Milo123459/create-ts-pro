@@ -29,7 +29,6 @@ writeFiles([
 		"allowSyntheticDefaultImports": true,
 		"skipLibCheck": true,
 		"skipDefaultLibCheck": true,
-		"declaration": true,
 		"resolveJsonModule": true
 	},
 	"include": ["src"],
